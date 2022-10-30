@@ -105,12 +105,14 @@ inline void NetworkFlowProcessor::populateNetFlow(NetFlowObj *nf, OpFlags flag,
   nf->netflow.numWSendOps = 0;
   nf->netflow.numRRecvBytes = 0;
   nf->netflow.numWSendBytes = 0;
+  nf->netflow.gapTime = 0;
 }
 
 inline void NetworkFlowProcessor::updateNetFlow(NetFlowObj *nf, OpFlags flag,
                                                 sinsp_evt *ev) {
   nf->netflow.opFlags |= flag;
   nf->lastUpdate = utils::getCurrentTime(m_cxt);
+  nf->netflow.gapTime = ev->get_ts() - nf->netflow.ts;
   if (flag == OP_WRITE_SEND) {
     nf->netflow.numWSendOps++;
     int res = utils::getSyscallResult(ev);
@@ -359,4 +361,5 @@ void NetworkFlowProcessor::exportNetworkFlow(DataFlowObj *dfo, time_t /*now*/) {
   nfo->netflow.numWSendOps = 0;
   nfo->netflow.numRRecvBytes = 0;
   nfo->netflow.numWSendBytes = 0;
+  nfo->netflow.gapTime = 0;
 }

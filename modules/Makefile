@@ -34,19 +34,19 @@ all: init \
 
 .PHONY: init
 init:
-	git submodule update --init --recursive --force
-	cd falco && git checkout $(FALCO_VERSION)
-ifneq ($(FALCO_LIBS_PR),)
-	cd falco-libs && git fetch origin pull/$(FALCO_LIBS_PR)/head:pull_$(FALCO_LIBS_PR) && git checkout pull_$(FALCO_LIBS_PR)
-else
-	cd falco-libs && git checkout $(FALCO_LIBS_VERSION)
-endif
-	cd falco-driver && git checkout $(FALCO_LIBS_DRIVER_VERSION)
-	cd avro && git checkout $(AVRO_VERSION)
-	cd elfutils && git checkout $(ELFUTILS_VERSION)
-	cd glog && git checkout $(GLOG_VERSION)
-	cd snappy && git checkout $(SNAPPY_VERSION)
-	cd dkms && git checkout $(DKMS_VERSION)
+# 	git submodule update --init --recursive --force
+# 	cd falco && git checkout $(FALCO_VERSION)
+# ifneq ($(FALCO_LIBS_PR),)
+# 	cd falco-libs && git fetch origin pull/$(FALCO_LIBS_PR)/head:pull_$(FALCO_LIBS_PR) && git checkout pull_$(FALCO_LIBS_PR)
+# else
+# 	cd falco-libs && git checkout $(FALCO_LIBS_VERSION)
+# endif
+# 	cd falco-driver && git checkout $(FALCO_LIBS_DRIVER_VERSION)
+# 	cd avro && git checkout $(AVRO_VERSION)
+# 	cd elfutils && git checkout $(ELFUTILS_VERSION)
+# 	cd glog && git checkout $(GLOG_VERSION)
+# 	cd snappy && git checkout $(SNAPPY_VERSION)
+# 	cd dkms && git checkout $(DKMS_VERSION)
 
 # elfutils is a pre-requisite for libs.
 .PHONY: modules

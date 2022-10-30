@@ -276,6 +276,7 @@ The list of attributes for the File Flow are as follows:
 | numWSendOps | int64 | Number of write operations performed during the duration of the flow. | 1 |
 | numRRecvBytes | int64 | Number of bytes read during the duration of the flow. | 1 |
 | numWSendBytes | int64 | Number of bytes written during the duration of the flow. | 1 |
+| gapTime | int64 | gap of time written during the duration of the flow. | 1 |
 
 #### Network Flow
 
@@ -310,6 +311,7 @@ The list of attributes for the Network Flow are as follows:
 | numWSendOps | int64 | Number of send operations performed during the duration of the flow. | 1 |
 | numRRecvBytes | int64 | Number of bytes received during the duration of the flow. | 1 |
 | numWSendBytes | int64 | Number of bytes sent during the duration of the flow. | 1 |
+| gapTime | int64 | gap of time written during the duration of the flow. | 1 |
 
 >---
 > **NOTE**  The current implementation of NetworkFlow only supports ipv4.

@@ -38,10 +38,15 @@ ARG ASAN=0
 
 # manifest (need to be copied here to refresh sysflow version)
 COPY ./makefile.manifest.inc /build/
+COPY ./Makefile /build/
 
 # build libsysflow
 COPY ./modules/sysflow/avro/avsc  /build/modules/sysflow/avro/avsc
+COPY ./modules/sysflow/avro/avdl/flow  /build/modules/sysflow/avro/avdl/flow
+COPY ./modules/sysflow/avro/avpr  /build/modules/sysflow/avro/avpr
 COPY ./modules/sysflow/c\+\+/sysflow/sysflow.hh ${MODPREFIX}/include/sysflow/c\+\+/sysflow/sysflow.hh
+COPY ./modules/sysflow/c\+\+/sysflow/avsc_sysflow2.hh ${MODPREFIX}/include/sysflow/c\+\+/sysflow/avsc_sysflow2.hh
+COPY ./modules/sysflow/c\+\+/sysflow/avsc_sysflow3.hh ${MODPREFIX}/include/sysflow/c\+\+/sysflow/avsc_sysflow3.hh
 COPY ./modules/sysflow/c\+\+/sysflow/avsc_sysflow4.hh ${MODPREFIX}/include/sysflow/c\+\+/sysflow/avsc_sysflow4.hh
 COPY ./src/libs /build/src/libs
 RUN make -C /build/src/libs \

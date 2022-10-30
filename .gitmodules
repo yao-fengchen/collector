@@ -1,30 +1,30 @@
-[submodule "avro"]
-	path = modules/avro
-    url = https://github.com/apache/avro.git
-[submodule "modules/sysflow"]
-	path = modules/sysflow
-	url = https://github.com/sysflow-telemetry/sf-apis.git
-[submodule "modules/filesystem"]
-	path = modules/filesystem
-	url = https://github.com/gulrak/filesystem.git
-[submodule "modules/falco-libs"]
-	path = modules/falco-libs
-	url = https://github.com/falcosecurity/libs.git
-[submodule "modules/falco"]
-	path = modules/falco
-	url = https://github.com/falcosecurity/falco.git
-[submodule "modules/elfutils"]
-	path = modules/elfutils
-	url = https://sourceware.org/git/elfutils.git
-[submodule "modules/glog"]
-	path = modules/glog
-	url = https://github.com/google/glog.git
-[submodule "modules/snappy"]
-	path = modules/snappy
-	url = https://github.com/google/snappy.git
-[submodule "modules/dkms"]
-	path = modules/dkms
-	url = https://github.com/dell/dkms.git
-[submodule "modules/falco-driver"]
-	path = modules/falco-driver
-	url = https://github.com/falcosecurity/libs.git
+# [submodule "avro"]
+# 	path = modules/avro
+#     url = https://github.com/apache/avro.git
+# [submodule "modules/sysflow"]
+# 	path = modules/sysflow
+# 	url = https://github.com/sysflow-telemetry/sf-apis.git
+# [submodule "modules/filesystem"]
+# 	path = modules/filesystem
+# 	url = https://github.com/gulrak/filesystem.git
+# [submodule "modules/falco-libs"]
+# 	path = modules/falco-libs
+# 	url = https://github.com/falcosecurity/libs.git
+# [submodule "modules/falco"]
+# 	path = modules/falco
+# 	url = https://github.com/falcosecurity/falco.git
+# [submodule "modules/elfutils"]
+# 	path = modules/elfutils
+# 	url = https://sourceware.org/git/elfutils.git
+# [submodule "modules/glog"]
+# 	path = modules/glog
+# 	url = https://github.com/google/glog.git
+# [submodule "modules/snappy"]
+# 	path = modules/snappy
+# 	url = https://github.com/google/snappy.git
+# [submodule "modules/dkms"]
+# 	path = modules/dkms
+# 	url = https://github.com/dell/dkms.git
+# [submodule "modules/falco-driver"]
+# 	path = modules/falco-driver
+# 	url = https://github.com/falcosecurity/libs.git
