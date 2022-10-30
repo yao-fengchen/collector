@@ -1,0 +1,65 @@
+{
+  "type" : "record",
+  "name" : "NetworkFlow",
+  "namespace" : "sysflow.flow",
+  "fields" : [ {
+    "name" : "procOID",
+    "type" : {
+      "type" : "record",
+      "name" : "OID",
+      "namespace" : "sysflow.type",
+      "fields" : [ {
+        "name" : "createTS",
+        "type" : "long"
+      }, {
+        "name" : "hpid",
+        "type" : "long"
+      } ]
+    }
+  }, {
+    "name" : "ts",
+    "type" : "long"
+  }, {
+    "name" : "tid",
+    "type" : "long"
+  }, {
+    "name" : "opFlags",
+    "type" : "int"
+  }, {
+    "name" : "endTs",
+    "type" : "long"
+  }, {
+    "name" : "sip",
+    "type" : "int"
+  }, {
+    "name" : "sport",
+    "type" : "int"
+  }, {
+    "name" : "dip",
+    "type" : "int"
+  }, {
+    "name" : "dport",
+    "type" : "int"
+  }, {
+    "name" : "proto",
+    "type" : "int"
+  }, {
+    "name" : "fd",
+    "type" : "int"
+  }, {
+    "name" : "numRRecvOps",
+    "type" : "long"
+  }, {
+    "name" : "numWSendOps",
+    "type" : "long"
+  }, {
+    "name" : "numRRecvBytes",
+    "type" : "long"
+  }, {
+    "name" : "numWSendBytes",
+    "type" : "long"
+  }, {
+      "name" : "gapTime",
+      "type" : "long"
+  } ]
+}

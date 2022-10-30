@@ -1,0 +1,12 @@
+{
+  "type" : "record",
+  "name" : "OID",
+  "namespace" : "sysflow.type",
+  "fields" : [ {
+    "name" : "createTS",
+    "type" : "long"
+  }, {
+    "name" : "hpid",
+    "type" : "long"
+  } ]
+}

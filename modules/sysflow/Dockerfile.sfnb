@@ -1,0 +1,47 @@
+#
+# Copyright (C) 2021 IBM Corporation.
+#
+# Authors:
+# Frederico Araujo <frederico.araujo@ibm.com>
+# Teryl Taylor <terylt@ibm.com>
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+ARG JUPYTER_VERSION=lab-3.4.0
+FROM jupyter/scipy-notebook:${JUPYTER_VERSION}
+
+# Build args
+ARG VERSION=dev
+ARG RELEASE=dev
+
+# Update Labels
+LABEL "name"="SysFlow Notebook"
+LABEL "vendor"="SysFlow"
+LABEL "maintainer"="The SysFlow team"
+LABEL "documentation"="https://sysflow.readthedocs.io"
+LABEL "version"="${VERSION}"
+LABEL "release"="${RELEASE}"
+LABEL "jupyter.version"="${JUPYTER_VERSION}"
+LABEL "summary"="The SysFlow Notebook is a pre-configured Jupyter Notebook based on scipy-notebook for SysFlow."
+LABEL "description"="The SysFlow Notebook is a pre-configured Jupyter Notebook based on scipy-notebook for SysFlow."
+LABEL "io.k8s.display-name"="SysFlow Notebook"
+LABEL "io.k8s.description"="The SysFlow Notebook is a pre-configured Jupyter Notebook based on scipy-notebook for SysFlow."
+
+# Install graphviz python bindings and rise
+RUN conda install -y graphviz && conda install -y -c conda-forge rise
+
+# Copy sources
+COPY --chown=$NB_UID:$NB_UID py3 /tmp/build
+COPY --chown=$NB_UID:$NB_UID pynb/requirements.txt /tmp/build/requirements.pynb.txt
+
+# Install sysflow API
+RUN cd /tmp/build && pip install --user -r requirements.pynb.txt && pip install --user . && rm -r /tmp/build

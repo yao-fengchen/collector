@@ -1,0 +1,38 @@
+{
+  "type" : "record",
+  "name" : "ProcessEvent",
+  "namespace" : "sysflow.event",
+  "fields" : [ {
+    "name" : "procOID",
+    "type" : {
+      "type" : "record",
+      "name" : "OID",
+      "namespace" : "sysflow.type",
+      "fields" : [ {
+        "name" : "createTS",
+        "type" : "long"
+      }, {
+        "name" : "hpid",
+        "type" : "long"
+      } ]
+    }
+  }, {
+    "name" : "ts",
+    "type" : "long"
+  }, {
+    "name" : "tid",
+    "type" : "long"
+  }, {
+    "name" : "opFlags",
+    "type" : "int"
+  }, {
+    "name" : "args",
+    "type" : {
+      "type" : "array",
+      "items" : "string"
+    }
+  }, {
+    "name" : "ret",
+    "type" : "int"
+  } ]
+}

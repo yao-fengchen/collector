@@ -1,0 +1,75 @@
+/** Copyright (C) 2019 IBM Corporation.
+*
+* Authors:
+* Frederico Araujo <frederico.araujo@ibm.com>
+* Teryl Taylor <terylt@ibm.com>
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+**/
+@namespace ("sysflow.type")
+
+protocol SysFlow {
+
+record OID {
+  long createTS;
+  long hpid;
+}
+
+fixed FOID(20);
+
+
+fixed ContainerID(6);
+
+enum SFObjectState {
+          CREATED, 
+          MODIFIED, 
+          REUP
+}
+
+enum ContainerType {
+    CT_DOCKER,
+    CT_LXC,
+    CT_LIBVIRT_LXC,
+    CT_MESOS,
+    CT_RKT,
+    CT_CUSTOM,
+    CT_CRI,
+    CT_CONTAINERD,
+    CT_CRIO,
+    CT_BPM
+}
+
+enum K8sAction {
+    K8S_COMPONENT_ADDED,
+    K8S_COMPONENT_MODIFIED,
+    K8S_COMPONENT_DELETED,
+    K8S_COMPONENT_ERROR,
+    K8S_COMPONENT_NONEXISTENT,
+    K8S_COMPONENT_UNKNOWN
+}
+
+enum K8sComponent {
+    K8S_NODES,
+    K8S_NAMESPACES,
+    K8S_PODS,
+    K8S_REPLICATIONCONTROLLERS,
+    K8S_SERVICES,
+    K8S_EVENTS,
+    K8S_REPLICASETS,
+    K8S_DAEMONSETS,
+    K8S_DEPLOYMENTS,
+    K8S_UNKNOWN
+}
+
+
+}

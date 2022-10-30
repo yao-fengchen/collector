@@ -1,0 +1,47 @@
+{
+  "type" : "record",
+  "name" : "NetworkEvent",
+  "namespace" : "sysflow.event",
+  "fields" : [ {
+    "name" : "procOID",
+    "type" : {
+      "type" : "record",
+      "name" : "OID",
+      "namespace" : "sysflow.type",
+      "fields" : [ {
+        "name" : "createTS",
+        "type" : "long"
+      }, {
+        "name" : "hpid",
+        "type" : "long"
+      } ]
+    }
+  }, {
+    "name" : "ts",
+    "type" : "long"
+  }, {
+    "name" : "tid",
+    "type" : "long"
+  }, {
+    "name" : "opFlags",
+    "type" : "int"
+  }, {
+    "name" : "sip",
+    "type" : "int"
+  }, {
+    "name" : "sport",
+    "type" : "int"
+  }, {
+    "name" : "dip",
+    "type" : "int"
+  }, {
+    "name" : "dport",
+    "type" : "int"
+  }, {
+    "name" : "proto",
+    "type" : "int"
+  }, {
+    "name" : "ret",
+    "type" : "int"
+  } ]
+}

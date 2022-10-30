@@ -1,0 +1,38 @@
+/** Copyright (C) 2019 IBM Corporation.
+*
+* Authors:
+* Frederico Araujo <frederico.araujo@ibm.com>
+* Teryl Taylor <terylt@ibm.com>
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+**/
+@namespace("sysflow")
+protocol SysFlow {
+import idl "flow/processflow.avdl";
+import idl "flow/networkflow.avdl";
+import idl "flow/fileflow.avdl";
+import idl "event/processevent.avdl";
+import idl "event/networkevent.avdl";
+import idl "event/fileevent.avdl";
+import idl "entity/process.avdl";
+import idl "entity/header.avdl";
+import idl "entity/container.avdl";
+import idl "entity/file.avdl";
+import idl "entity/pod.avdl";
+import idl "event/k8sevent.avdl";
+
+
+record SysFlow {
+   union {sysflow.entity.SFHeader, sysflow.entity.Container, sysflow.entity.Process, sysflow.entity.File, sysflow.event.ProcessEvent, sysflow.flow.NetworkFlow, sysflow.flow.FileFlow, sysflow.event.FileEvent, sysflow.event.NetworkEvent, sysflow.flow.ProcessFlow, sysflow.entity.Pod, sysflow.event.K8sEvent} rec;
+}
+}
