@@ -134,7 +134,7 @@ docker-collector-build/musl:
 
 .PHONY: docker-build
 docker-build:
-	( DOCKER_BUILDKIT=1 docker buildx build --platform linux/amd64 --build-arg UBI_VER=${UBI_VERSION} --build-arg FALCO_VER=${FALCO_VERSION} --build-arg FALCO_LIBS_VER=${FALCO_LIBS_VERSION} --build-arg FALCO_LIBS_DRIVER_VER=${FALCO_LIBS_DRIVER_VERSION} --target runtime -t yaofengchen/sf-collector:1.2 -f Dockerfile . )
+	( DOCKER_BUILDKIT=1 docker buildx build --platform linux/amd64 --build-arg UBI_VER=${UBI_VERSION} --build-arg FALCO_VER=${FALCO_VERSION} --build-arg FALCO_LIBS_VER=${FALCO_LIBS_VERSION} --build-arg FALCO_LIBS_DRIVER_VER=${FALCO_LIBS_DRIVER_VERSION} --target runtime -t yaofengchen/sf-collector:1.3 -f Dockerfile . )
 
 .PHONY: docker-runtime-build/musl
 docker-runtime-build/musl:

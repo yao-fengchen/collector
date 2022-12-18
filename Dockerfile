@@ -61,7 +61,7 @@ RUN make -C /build/src/libs \
          SCHLOCALPREFIX=${MODPREFIX}/conf \
          DEBUG=${DEBUG} \
          ASAN=${ASAN} \
-         install
+         install -j8
 
 #-----------------------
 # Stage: Collector
@@ -91,7 +91,7 @@ RUN cd /build/src/collector && \
          SCHLOCALPREFIX=${MODPREFIX}/conf \
          DEBUG=${DEBUG} \
          ASAN=${ASAN} \
-         install
+         install -j8
 
 #-----------------------
 # Stage: Runtime
@@ -214,8 +214,8 @@ ENV FILE_READ_MODE=0
 
 # Install extra packages for tests
 RUN mkdir /tmp/bats && cd /tmp/bats && \
-    wget https://github.com/bats-core/bats-core/archive/v${BATS_VERSION}.tar.gz && \
-    tar -xzf v${BATS_VERSION}.tar.gz && rm -rf v${BATS_VERSION}.tar.gz && \
+COPY package/v${BATS_VERSION}.tar.gz .
+RUN tar -xzf v${BATS_VERSION}.tar.gz && rm -rf v${BATS_VERSION}.tar.gz && \
     cd bats-core-${BATS_VERSION} && ./install.sh /usr/local && rm -rf /tmp/bats
 
 # install APIs
