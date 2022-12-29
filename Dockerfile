@@ -214,7 +214,7 @@ ENV FILE_READ_MODE=0
 
 # Install extra packages for tests
 RUN mkdir /tmp/bats && cd /tmp/bats && \
-COPY package/v${BATS_VERSION}.tar.gz .
+RUN wget https://github.com/bats-core/bats-core/archive/v${BATS_VERSION}.tar.gz
 RUN tar -xzf v${BATS_VERSION}.tar.gz && rm -rf v${BATS_VERSION}.tar.gz && \
     cd bats-core-${BATS_VERSION} && ./install.sh /usr/local && rm -rf /tmp/bats
 
