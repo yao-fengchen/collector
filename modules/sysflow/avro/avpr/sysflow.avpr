@@ -121,6 +121,9 @@
     }, {
       "name" : "gapTime",
       "type" : "long"
+    }, {
+      "name" : "duration",
+      "type" : "long"
     } ]
   }, {
     "type" : "record",
@@ -164,6 +167,9 @@
       "type" : "long"
     }, {
       "name" : "gapTime",
+      "type" : "long"
+    }, {
+      "name" : "duration",
       "type" : "long"
     } ]
   }, {

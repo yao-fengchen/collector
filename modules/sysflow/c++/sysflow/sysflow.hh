@@ -246,6 +246,7 @@ struct NetworkFlow {
     int64_t numRRecvBytes;
     int64_t numWSendBytes;
     int64_t gapTime;
+    int64_t duration;
     NetworkFlow() :
         procOID(OID()),
         ts(int64_t()),
@@ -262,7 +263,8 @@ struct NetworkFlow {
         numWSendOps(int64_t()),
         numRRecvBytes(int64_t()),
         numWSendBytes(int64_t()),
-        gapTime(int64_t())
+        gapTime(int64_t()),
+        duration(int64_t())
         { }
 };
 
@@ -280,6 +282,7 @@ struct FileFlow {
     int64_t numRRecvBytes;
     int64_t numWSendBytes;
     int64_t gapTime;
+    int64_t duration;
     FileFlow() :
         procOID(OID()),
         ts(int64_t()),
@@ -293,7 +296,8 @@ struct FileFlow {
         numWSendOps(int64_t()),
         numRRecvBytes(int64_t()),
         numWSendBytes(int64_t()),
-        gapTime(int64_t())
+        gapTime(int64_t()),
+        duration(int64_t())
         { }
 };
 
@@ -1246,6 +1250,7 @@ template<> struct codec_traits<sysflow::NetworkFlow> {
         avro::encode(e, v.numRRecvBytes);
         avro::encode(e, v.numWSendBytes);
         avro::encode(e, v.gapTime);
+        avro::encode(e, v.duration);
     }
     static void decode(Decoder& d, sysflow::NetworkFlow& v) {
         if (avro::ResolvingDecoder *rd =
@@ -1302,6 +1307,9 @@ template<> struct codec_traits<sysflow::NetworkFlow> {
                 case 15:
                     avro::decode(d, v.gapTime);
                     break;
+                case 16:
+                    avro::decode(d, v.duration);
+                    break;
                 default:
                     break;
                 }
@@ -1323,6 +1331,7 @@ template<> struct codec_traits<sysflow::NetworkFlow> {
             avro::decode(d, v.numRRecvBytes);
             avro::decode(d, v.numWSendBytes);
             avro::decode(d, v.gapTime);
+            avro::decode(d, v.duration);
         }
     }
 };
@@ -1342,6 +1351,7 @@ template<> struct codec_traits<sysflow::FileFlow> {
         avro::encode(e, v.numRRecvBytes);
         avro::encode(e, v.numWSendBytes);
         avro::encode(e, v.gapTime);
+        avro::encode(e, v.duration);
     }
     static void decode(Decoder& d, sysflow::FileFlow& v) {
         if (avro::ResolvingDecoder *rd =
@@ -1389,6 +1399,9 @@ template<> struct codec_traits<sysflow::FileFlow> {
                 case 12:
                     avro::decode(d, v.gapTime);
                     break;
+                case 13:
+                    avro::decode(d, v.duration);
+                    break;
                 default:
                     break;
                 }
@@ -1407,6 +1420,7 @@ template<> struct codec_traits<sysflow::FileFlow> {
             avro::decode(d, v.numRRecvBytes);
             avro::decode(d, v.numWSendBytes);
             avro::decode(d, v.gapTime);
+            avro::decode(d, v.duration);
         }
     }
 };

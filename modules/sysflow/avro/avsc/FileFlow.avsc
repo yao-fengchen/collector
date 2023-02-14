@@ -57,5 +57,8 @@
   }, {
       "name" : "gapTime",
       "type" : "long"
-  } ]
+  }, {
+      "name" : "duration",
+      "type" : "long"
+    } ]
 }

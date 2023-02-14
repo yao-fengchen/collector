@@ -245,6 +245,7 @@ func (s *SFObjectConverter) createFileFlow(fileFlow map[string]interface{}) *sfg
 		NumRRecvBytes: fileFlow[cNumRRecvBytes].(int64),
 		NumWSendBytes: fileFlow[cNumWSendBytes].(int64),
 		GapTime:       fileFlow[cGapTime].(int64),
+		Duration:	   fileFlow[cDurantion].(int64),
 	}
 	copy(sffileFlow.FileOID[:], fileFlow[cFileOID].([]byte))
 	return sffileFlow
@@ -280,7 +281,8 @@ func (s *SFObjectConverter) createNetFlow(netFlow map[string]interface{}) *sfgo.
 		NumWSendOps:   netFlow[cNumWSendOps].(int64),
 		NumRRecvBytes: netFlow[cNumRRecvBytes].(int64),
 		NumWSendBytes: netFlow[cNumWSendBytes].(int64),
-		GapTime:	   netFlow[cGapTime].(int64)
+		GapTime:	   netFlow[cGapTime].(int64),
+		Duration:      netFlow[cDurantion].(int64),
 	}
 	return sfnetFlow
 }

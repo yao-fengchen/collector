@@ -67,6 +67,7 @@ inline void FileFlowProcessor::populateFileFlow(FileFlowObj *ff, OpFlags flag,
   ff->fileflow.numRRecvBytes = 0;
   ff->fileflow.numWSendBytes = 0;
   ff->fileflow.gapTime = 0;
+  ff->fileflow.duration = 0;
 }
 
 void FileFlowProcessor::removeAndWriteRelatedFlows(ProcessObj *proc,
@@ -103,8 +104,9 @@ inline void FileFlowProcessor::updateFileFlow(FileFlowObj *ff, OpFlags flag,
                                               sinsp_evt *ev,
                                               sinsp_fdinfo_t *fdinfo) {
   ff->fileflow.opFlags |= flag;
+  ff->fileflow.gapTime = ev->get_ts() - ff->fileflow.ts - ff->fileflow.duration;
+  ff->fileflow.duration = ev->get_ts() - ff->fileflow.ts;
   ff->lastUpdate = utils::getCurrentTime(m_cxt);
-  ff->fileflow.gapTime = ev->get_ts() - ff->fileflow.ts;
   if (flag == OP_OPEN) {
     ff->fileflow.openFlags = fdinfo->m_openflags;
   } else if (flag == OP_WRITE_SEND) {
@@ -422,4 +424,5 @@ void FileFlowProcessor::exportFileFlow(DataFlowObj *dfo, time_t /*now*/) {
   ffo->fileflow.numRRecvBytes = 0;
   ffo->fileflow.numWSendBytes = 0;
   ffo->fileflow.gapTime = 0;
+  ffo->fileflow.duration = 0;
 }

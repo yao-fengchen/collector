@@ -89,6 +89,15 @@ inline void NetworkFlowProcessor::populateNetFlow(NetFlowObj *nf, OpFlags flag,
                                                   ProcessObj *proc) {
   sinsp_fdinfo_t *fdinfo = ev->get_fd_info();
   sinsp_threadinfo *ti = ev->get_thread_info();
+  // ppm_param_info *pi = ev->get_param_info();
+  // ev->get_direction();
+  // ev->get_info_category();
+  // ev->get_info_flags();
+  // ev->get_iosize();         
+  // ev->get_lastevent_ts();
+  // ev->get_name();
+  // ti->get_comm();
+  // ti->get_cwd();
   nf->netflow.opFlags = flag;
   nf->netflow.ts = ev->get_ts();
   nf->netflow.fd = ev->get_fd_num();
@@ -106,13 +115,15 @@ inline void NetworkFlowProcessor::populateNetFlow(NetFlowObj *nf, OpFlags flag,
   nf->netflow.numRRecvBytes = 0;
   nf->netflow.numWSendBytes = 0;
   nf->netflow.gapTime = 0;
+  nf->netflow.duration = 0;
 }
 
 inline void NetworkFlowProcessor::updateNetFlow(NetFlowObj *nf, OpFlags flag,
                                                 sinsp_evt *ev) {
   nf->netflow.opFlags |= flag;
+  nf->netflow.gapTime = ev->get_ts() - nf->netflow.ts - nf->netflow.duration;
+  nf->netflow.duration = ev->get_ts() - nf->netflow.ts;
   nf->lastUpdate = utils::getCurrentTime(m_cxt);
-  nf->netflow.gapTime = ev->get_ts() - nf->netflow.ts;
   if (flag == OP_WRITE_SEND) {
     nf->netflow.numWSendOps++;
     int res = utils::getSyscallResult(ev);
@@ -362,4 +373,5 @@ void NetworkFlowProcessor::exportNetworkFlow(DataFlowObj *dfo, time_t /*now*/) {
   nfo->netflow.numRRecvBytes = 0;
   nfo->netflow.numWSendBytes = 0;
   nfo->netflow.gapTime = 0;
+  nfo->netflow.duration= 0;
 }

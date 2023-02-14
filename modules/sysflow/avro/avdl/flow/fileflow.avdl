@@ -33,5 +33,6 @@ record FileFlow {
   long numRRecvBytes;
   long numWSendBytes;
   long gapTime;
+  long duration;
 }
 }

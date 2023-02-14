@@ -221,7 +221,10 @@
       }, {
       "name" : "gapTime",
       "type" : "long"
-      } ]
+      }, {
+      "name" : "duration",
+      "type" : "long"
+    } ]
     }, {
       "type" : "record",
       "name" : "FileFlow",
@@ -265,7 +268,10 @@
       }, {
       "name" : "gapTime",
       "type" : "long"
-      } ]
+      }, {
+      "name" : "duration",
+      "type" : "long"
+    } ]
     }, {
       "type" : "record",
       "name" : "FileEvent",

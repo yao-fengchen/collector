@@ -42,6 +42,7 @@ const (
 	cNumRRecvBytes = "numRRecvBytes"
 	cNumWSendBytes = "numWSendBytes"
 	cGapTime       = "gapTime"
+	cDurantion	   = "duration"
 	cString        = "string"
 
 	cHeader      = "sysflow.entity.SFHeader"
