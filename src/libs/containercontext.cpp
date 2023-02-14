@@ -29,6 +29,7 @@ void ContainerContext::setContainer(ContainerObj **cont,
   (*cont)->cont.image = container->m_image + ":" + container->m_imagetag;
   (*cont)->cont.id = container->m_id;
   (*cont)->cont.imageid = container->m_imageid;
+  (*cont)->cont.imagerepo = container->m_imagerepo;
   (*cont)->cont.type = static_cast<ContainerType>(container->m_type);
   (*cont)->cont.privileged = container->m_privileged;
   int64_t m_count = 0;

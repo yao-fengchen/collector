@@ -89,15 +89,6 @@ inline void NetworkFlowProcessor::populateNetFlow(NetFlowObj *nf, OpFlags flag,
                                                   ProcessObj *proc) {
   sinsp_fdinfo_t *fdinfo = ev->get_fd_info();
   sinsp_threadinfo *ti = ev->get_thread_info();
-  // ppm_param_info *pi = ev->get_param_info();
-  // ev->get_direction();
-  // ev->get_info_category();
-  // ev->get_info_flags();
-  // ev->get_iosize();         
-  // ev->get_lastevent_ts();
-  // ev->get_name();
-  // ti->get_comm();
-  // ti->get_cwd();
   nf->netflow.opFlags = flag;
   nf->netflow.ts = ev->get_ts();
   nf->netflow.fd = ev->get_fd_num();

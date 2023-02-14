@@ -26,6 +26,7 @@ record Container {
   string name;
   string image;
   string imageid;
+  string imagerepo;
   string mountsource;
   string mountdest;
   string mountmode;

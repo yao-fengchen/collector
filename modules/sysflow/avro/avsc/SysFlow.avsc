@@ -40,6 +40,9 @@
         "name" : "imageid",
         "type" : "string"
       }, {
+        "name" : "imagerepo",
+        "type" : "string"
+      }, {
       "name" : "mountsource",
       "type" : "string"
     }, {
