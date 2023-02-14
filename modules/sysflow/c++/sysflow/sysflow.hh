@@ -78,6 +78,10 @@ struct Container {
     std::string name;
     std::string image;
     std::string imageid;
+    std::string mountsource;
+    std::string mountdest;
+    std::string mountmode;
+    std::string mountpropagation;
     ContainerType type;
     bool privileged;
     podId_t podId;
@@ -86,6 +90,10 @@ struct Container {
         name(std::string()),
         image(std::string()),
         imageid(std::string()),
+        mountsource(std::string()),
+        mountdest(std::string()),
+        mountmode(std::string()),
+        mountpropagation(std::string()),
         type(ContainerType()),
         privileged(bool()),
         podId(podId_t())
@@ -858,6 +866,10 @@ template<> struct codec_traits<sysflow::Container> {
         avro::encode(e, v.name);
         avro::encode(e, v.image);
         avro::encode(e, v.imageid);
+        avro::encode(e, v.mountsource);
+        avro::encode(e, v.mountdest);
+        avro::encode(e, v.mountmode);
+        avro::encode(e, v.mountpropagation);
         avro::encode(e, v.type);
         avro::encode(e, v.privileged);
         avro::encode(e, v.podId);
@@ -882,12 +894,24 @@ template<> struct codec_traits<sysflow::Container> {
                     avro::decode(d, v.imageid);
                     break;
                 case 4:
-                    avro::decode(d, v.type);
+                    avro::decode(d, v.mountsource);
                     break;
                 case 5:
-                    avro::decode(d, v.privileged);
+                    avro::decode(d, v.mountdest);
                     break;
                 case 6:
+                    avro::decode(d, v.mountmode);
+                    break;
+                case 7:
+                    avro::decode(d, v.mountpropagation);
+                    break;
+                case 8:
+                    avro::decode(d, v.type);
+                    break;
+                case 9:
+                    avro::decode(d, v.privileged);
+                    break;
+                case 10:
                     avro::decode(d, v.podId);
                     break;
                 default:
@@ -899,6 +923,10 @@ template<> struct codec_traits<sysflow::Container> {
             avro::decode(d, v.name);
             avro::decode(d, v.image);
             avro::decode(d, v.imageid);
+            avro::decode(d, v.mountsource);
+            avro::decode(d, v.mountdest);
+            avro::decode(d, v.mountmode);
+            avro::decode(d, v.mountpropagation);
             avro::decode(d, v.type);
             avro::decode(d, v.privileged);
             avro::decode(d, v.podId);

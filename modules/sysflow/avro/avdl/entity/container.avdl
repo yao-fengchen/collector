@@ -26,6 +26,10 @@ record Container {
   string name;
   string image;
   string imageid;
+  string mountsource;
+  string mountdest;
+  string mountmode;
+  string mountpropagation;
   sysflow.type.ContainerType type; 
   boolean privileged;
   union{null, string} podId;

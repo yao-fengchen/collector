@@ -31,6 +31,21 @@ void ContainerContext::setContainer(ContainerObj **cont,
   (*cont)->cont.imageid = container->m_imageid;
   (*cont)->cont.type = static_cast<ContainerType>(container->m_type);
   (*cont)->cont.privileged = container->m_privileged;
+  int64_t m_count = 0;
+  for (auto &mntinfo : container->m_mounts) {
+    ++m_count;
+    if (m_count == 1) {
+      (*cont)->cont.mountsource = mntinfo.m_source;
+      (*cont)->cont.mountdest = mntinfo.m_dest;
+      (*cont)->cont.mountmode = mntinfo.m_mode;
+      (*cont)->cont.mountpropagation = mntinfo.m_propagation;
+    } else {
+      (*cont)->cont.mountsource += "  " + mntinfo.m_source;
+      (*cont)->cont.mountdest += "  " + mntinfo.m_dest;
+      (*cont)->cont.mountmode += "  " + mntinfo.m_mode;
+      (*cont)->cont.mountpropagation += "  " + mntinfo.m_propagation;
+    }
+  }
 }
 
 ContainerContext::ContainerContext(context::SysFlowContext *cxt,

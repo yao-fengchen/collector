@@ -40,6 +40,18 @@
         "name" : "imageid",
         "type" : "string"
       }, {
+      "name" : "mountsource",
+      "type" : "string"
+    }, {
+      "name" : "mountdest",
+      "type" : "string"
+    }, {
+      "name" : "mountmode",
+      "type" : "string"
+    }, {
+      "name" : "mountpropagation",
+      "type" : "string"
+    }, {
         "name" : "type",
         "type" : {
           "type" : "enum",

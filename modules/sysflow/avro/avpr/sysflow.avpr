@@ -276,6 +276,18 @@
       "name" : "imageid",
       "type" : "string"
     }, {
+      "name" : "mountdource",
+      "type" : "string"
+    }, {
+      "name" : "mountdest",
+      "type" : "string"
+    }, {
+      "name" : "mountmode",
+      "type" : "string"
+    }, {
+      "name" : "mountpropagation",
+      "type" : "string"
+    }, {
       "name" : "type",
       "type" : "sysflow.type.ContainerType"
     }, {
