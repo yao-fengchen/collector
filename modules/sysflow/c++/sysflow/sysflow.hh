@@ -83,6 +83,8 @@ struct Container {
     std::string mountdest;
     std::string mountmode;
     std::string mountpropagation;
+    std::string hostport;
+    std::string containerport;
     ContainerType type;
     bool privileged;
     podId_t podId;
@@ -96,6 +98,8 @@ struct Container {
         mountdest(std::string()),
         mountmode(std::string()),
         mountpropagation(std::string()),
+        hostport(std::string()),
+        containerport(std::string()),
         type(ContainerType()),
         privileged(bool()),
         podId(podId_t())
@@ -873,6 +877,8 @@ template<> struct codec_traits<sysflow::Container> {
         avro::encode(e, v.mountdest);
         avro::encode(e, v.mountmode);
         avro::encode(e, v.mountpropagation);
+        avro::encode(e, v.hostport);
+        avro::encode(e, v.containerport);
         avro::encode(e, v.type);
         avro::encode(e, v.privileged);
         avro::encode(e, v.podId);
@@ -912,12 +918,18 @@ template<> struct codec_traits<sysflow::Container> {
                     avro::decode(d, v.mountpropagation);
                     break;
                 case 9:
-                    avro::decode(d, v.type);
+                    avro::decode(d, v.hostport);
                     break;
                 case 10:
-                    avro::decode(d, v.privileged);
+                    avro::decode(d, v.containerport);
                     break;
                 case 11:
+                    avro::decode(d, v.type);
+                    break;
+                case 12:
+                    avro::decode(d, v.privileged);
+                    break;
+                case 13:
                     avro::decode(d, v.podId);
                     break;
                 default:
@@ -934,6 +946,8 @@ template<> struct codec_traits<sysflow::Container> {
             avro::decode(d, v.mountdest);
             avro::decode(d, v.mountmode);
             avro::decode(d, v.mountpropagation);
+            avro::decode(d, v.hostport);
+            avro::decode(d, v.containerport);
             avro::decode(d, v.type);
             avro::decode(d, v.privileged);
             avro::decode(d, v.podId);

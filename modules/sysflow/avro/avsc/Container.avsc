@@ -30,6 +30,12 @@
       "name" : "mountpropagation",
       "type" : "string"
     }, {
+      "name" : "hostport",
+      "type" : "string"
+    }, {
+      "name" : "containerport",
+      "type" : "string"
+    }, {
     "name" : "type",
     "type" : {
       "type" : "enum",

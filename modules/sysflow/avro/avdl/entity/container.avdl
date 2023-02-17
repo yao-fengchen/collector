@@ -31,6 +31,8 @@ record Container {
   string mountdest;
   string mountmode;
   string mountpropagation;
+  string hostport;
+  string containerport;
   sysflow.type.ContainerType type; 
   boolean privileged;
   union{null, string} podId;

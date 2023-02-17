@@ -41,10 +41,21 @@ void ContainerContext::setContainer(ContainerObj **cont,
       (*cont)->cont.mountmode = mntinfo.m_mode;
       (*cont)->cont.mountpropagation = mntinfo.m_propagation;
     } else {
-      (*cont)->cont.mountsource += "  " + mntinfo.m_source;
-      (*cont)->cont.mountdest += "  " + mntinfo.m_dest;
-      (*cont)->cont.mountmode += "  " + mntinfo.m_mode;
-      (*cont)->cont.mountpropagation += "  " + mntinfo.m_propagation;
+      (*cont)->cont.mountsource += " " + mntinfo.m_source;
+      (*cont)->cont.mountdest += " " + mntinfo.m_dest;
+      (*cont)->cont.mountmode += " " + mntinfo.m_mode;
+      (*cont)->cont.mountpropagation += " " + mntinfo.m_propagation;
+    }
+  }
+  m_count = 0;
+  for(auto &mapping : container->m_port_mappings) {
+    ++m_count;
+    if (m_count == 1) {
+      (*cont)->cont.hostport = to_string(mapping.m_host_port);
+      (*cont)->cont.containerport = to_string(mapping.m_container_port);
+    } else {
+      (*cont)->cont.hostport += " " + to_string(mapping.m_host_port);
+      (*cont)->cont.containerport += " " + to_string(mapping.m_container_port);
     }
   }
 }
