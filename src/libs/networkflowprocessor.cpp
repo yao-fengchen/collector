@@ -364,5 +364,5 @@ void NetworkFlowProcessor::exportNetworkFlow(DataFlowObj *dfo, time_t /*now*/) {
   nfo->netflow.numRRecvBytes = 0;
   nfo->netflow.numWSendBytes = 0;
   nfo->netflow.gapTime = 0;
-  nfo->netflow.duration= 0;
+  nfo->netflow.duration = 0;
 }

@@ -48,7 +48,7 @@ void ContainerContext::setContainer(ContainerObj **cont,
     }
   }
   m_count = 0;
-  for(auto &mapping : container->m_port_mappings) {
+  for (auto &mapping : container->m_port_mappings) {
     ++m_count;
     if (m_count == 1) {
       (*cont)->cont.hostport = to_string(mapping.m_host_port);
